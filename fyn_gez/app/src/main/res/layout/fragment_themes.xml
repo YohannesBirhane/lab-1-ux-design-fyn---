@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Step 2: Top Tabs ("MY THEMES" & "NEW THEMES") -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutThemes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tabIndicatorColor="#A00000"
+        app:tabSelectedTextColor="#A00000"
+        app:tabTextColor="?android:attr/textColorPrimary">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tab_my_themes" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_cloud_download"
+            android:text="@string/tab_new_themes" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <!-- Step 4: Scrollable Grid Area -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvThemes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="4dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        app:layout_constraintTop_toBottomOf="@id/tabLayoutThemes"
+        app:layout_constraintBottom_toTopOf="@id/layoutBottomTest"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/item_theme" />
+
+    <!-- Step 3: Bottom Test Bar ("ለመፈተሽ ይጻፉ") -->
+    <LinearLayout
+        android:id="@+id/layoutBottomTest"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="?android:attr/windowBackground"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <EditText
+            android:id="@+id/etTestInput"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_rounded_input"
+            android:hint="@string/test_input_hint"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textSize="14sp"
+            android:inputType="text"
+            android:autofillHints="text" />
+
+        <ImageButton
+            android:id="@+id/btnEditAction"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/ic_edit"
+            android:backgroundTint="#000000"
+            android:contentDescription="Edit test input action" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
